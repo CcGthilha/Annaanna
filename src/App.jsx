@@ -30,7 +30,7 @@ export default function App() {
   const [p, setP] = useState('home')
   const [z, setZ] = useState(null)
   const go = (x) => () => setP(x)
-  const Back = ({ to = 'gift', t = 'ย้อนกลับ', c = '' }) => <button className={'back ' + c} onClick={go(to)}>{t}</button>
+  const Back = ({ to = 'gift', t = 'ย้อนกลับ' }) => <button className="back" onClick={go(to)}>{t}</button>
   const Photo = ({ i, c = '' }) => <img className={c} src={P[i % P.length]} alt="" />
 
   return (<>
@@ -84,16 +84,15 @@ export default function App() {
       {p === 'end' && <>
         <div className="row hearts">{[0, 1, 2].map(i => <Photo key={i} i={i} c="heart" />)}</div>
         <Back to="cake" />
-        <button className="back nxt" onClick={go('mem')}>รูปที่น้องบลูถ่าย</button>
+        <button className="back nxt" onClick={go('mem')}>รูปที่น้องบลูกดถ่าย</button>
       </>}
 
       {p === 'mem' && <>
-        <button className="back mtop" onClick={go('end')}>← ย้อนกลับ</button>
         <h2>our memories ♡</h2>
         <div className="mem" style={{ '--n': H.n, '--ar': H.ar }}>
           {H.a.map(([c, r], k) => <img key={k} src={M(k)} alt="" loading="lazy" onClick={() => setZ(M(k))} style={{ gridColumn: c, gridRow: r, animationDelay: k * 40 + 'ms' }} />)}
         </div>
-        <Back to="end" c="mbot" />
+        <Back to="end" />
       </>}
     </main>
     {z && <div className="zoom" onClick={() => setZ(null)}><img src={z} alt="" /></div>}

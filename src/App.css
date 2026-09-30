@@ -110,16 +110,3 @@ main { min-height: 100dvh }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important } }
 
-.mtop { display: none; }
-
-@media (max-width: 600px) {
-  .mtop {
-    display: block;
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 10;
-    margin: 0;
-  }
-  .mbot { display: none; }
-}
